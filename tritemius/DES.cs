@@ -17,13 +17,13 @@ namespace tritemius
            
             get
             {
-
+                //лишній пустий рядок
                 return _key;
             }
 
             set
             {
-           string  tempkey=value;
+           string  tempkey=value;//змісти код рядка вправо на декілька символів
                 if (tempkey.Length==8)
                 {
                         _key = value;
@@ -32,7 +32,7 @@ namespace tritemius
                 {
                     MessageBox.Show("Key length must be 8 symbols!");
                 }
-               
+               //лишні пусті рядки
 
 
             }
@@ -51,7 +51,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//Опиши в коментаріях що робить кожен метод
         {
             string tmp = "";
             try
@@ -75,10 +75,10 @@ namespace tritemius
            
             return tmp;
 
-
+//прибери лишній рядок :)
         }
 
-        public override string encrypt()
+        public override string encrypt()//чекаю коментарів))
         {
             try
             {
@@ -101,7 +101,7 @@ namespace tritemius
            
             return File.ReadAllText(@fileName, Encoding.GetEncoding(1251)); 
            
-            
+            //видали пусті рядки
            
         }
     }
