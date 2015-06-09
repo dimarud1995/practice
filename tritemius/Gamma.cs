@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace tritemius
 {
-    class Gamma :BaseClass
+    class Gamma :BaseClass //опиши клас
     {
         private string tempString;
         private int[] Key1 = new int[500];
@@ -19,13 +19,13 @@ namespace tritemius
         {
             get
             {
-
+//прибери рядок
                 return _key;
             }
 
             set
             {
-
+//прибери пусті рядки
                 _key = value;
 
 
@@ -45,7 +45,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//опиши що виконує даний метод
         {
             tempString = "";
             getKey(Key);
@@ -64,7 +64,7 @@ namespace tritemius
 
                        //tempString += item;
                             MessageBox.Show("Символ не кодується: " + item);
-
+//прибери лишні рядки
 
                 }
 
@@ -77,7 +77,7 @@ namespace tritemius
             return Text;
         }
 
-        public override string encrypt()
+        public override string encrypt()//опиши метод
         {
 
             tempString = "";
@@ -90,7 +90,7 @@ namespace tritemius
                 {
                    
                             //tempString += item;
-                            MessageBox.Show("Символ не кодується: " + item);
+                            MessageBox.Show("Символ не кодується: " + item);//проструктуруй рядок
      
                 }
 
@@ -106,7 +106,7 @@ namespace tritemius
             return Text;
         }
 
-        private void getKey(string key)
+        private void getKey(string key)//опиши
         {
 
             int st;
@@ -119,7 +119,7 @@ namespace tritemius
                 st = int.Parse(Key);
             }
             
-
+//багато пропущено рядків
 
             Random rand;
             string st1 =null;
@@ -134,7 +134,7 @@ namespace tritemius
             
         }
 
-        private bool substitution(char item, int amount, string listLanguage,int iterator)
+        private bool substitution(char item, int amount, string listLanguage,int iterator)// опиши що робить
         {
             if (listLanguage.Contains(item))
             {
@@ -143,7 +143,7 @@ namespace tritemius
                         if (item == System.Convert.ToChar(listLanguage[i]))
                         {
                       
-                            int z = i^Key1[iterator];
+                            int z = i^Key1[iterator]; //не подобається мені назва змінної
                             decText.Add(z);
                       
                       //      Console.WriteLine("{0} {1} {2} {3} {4} {5}", i, iterator,Key1[iterator], z, tempString, listLanguage[z]);
@@ -160,7 +160,7 @@ namespace tritemius
         }
         private bool substitution1(int item, int amount, string listLanguage, int iterator)
         {
-            int z = item ^ Key1[iterator];
+            int z = item ^ Key1[iterator];//назва змінної
 
             tempString += System.Convert.ToChar(listLanguage[z]);
                 return true;
