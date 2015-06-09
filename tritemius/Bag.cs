@@ -14,10 +14,10 @@ namespace tritemius
        static public string temp;
         static public string T;
         static public string P;
-    }
+    } //я б радила зробити відступ між класами
     class Bag : BaseClass
     {
-        public int m, t;
+        public int m, t;// цікаві імена для змінних, а головне - несуть велику інформованість :) 
         int t1;
         int[] tempKeyS;
         int[] tempKeyP;
@@ -26,8 +26,8 @@ namespace tritemius
         {
 
             get
-            {
-
+            {//я б прибрали пустий рядок нижче 
+            
                 return _key;
             }
 
@@ -51,7 +51,7 @@ namespace tritemius
         }
 
 
-        public override string decrypt()
+        public override string decrypt()//Діма, допиши коментарії до свої методів (що кожен робить)
         {
             string tempString = "";
             string[] tempDec = Text.Split(' ');
@@ -63,7 +63,7 @@ namespace tritemius
            // m = getM(tempKeyS);
          
             transport.P = m.ToString();
-            t1 = getT1(m, t);
+            t1 = getT1(m, t);// + змінити назву змінної
             transport.T = t1.ToString();
             Console.WriteLine("P={0}  T={1}", m, t1);
             try
@@ -291,3 +291,5 @@ namespace tritemius
      
     }
 }
+
+// там де є пусті непотрібні рядочки - повидаляй)
