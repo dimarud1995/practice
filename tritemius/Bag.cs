@@ -12,8 +12,8 @@ namespace tritemius
     static class transport//опиши клас
     {
        static public string temp;
-        static public string T;
-        static public string P;
+        static public string T;//про що змінна?
+        static public string P;//про що змінна?
     } //я б радила зробити відступ між класами
     class Bag : BaseClass//опиши клас
     {
