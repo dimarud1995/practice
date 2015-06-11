@@ -11,11 +11,11 @@ using System.IO;
 
 namespace tritemius
 {
-    public static class TypeKey//що робить клас?
+    public static class TypeKey//type key on form
     {
         public static int radioValue = 1;
     }
-    class Tritemius : BaseClass//що робить клас?
+    class Tritemius : BaseClass//Abstract class: key,text, methods: encrypt, decrypt
     {
         private int[] Key1 = new int[500];
         private string tempString;
@@ -29,16 +29,12 @@ namespace tritemius
         {
             get
             {
-//прибери лишні рядки
                 return _key;
             }
 
             set
             {
-//прибери лишні рядки
                 _key = value;
-
-
             }
         }
 
@@ -55,7 +51,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()//що робить метод?
+        public override string decrypt()//decrypt
         {
             tempString = "";
             getKey(Key);
@@ -79,27 +75,27 @@ namespace tritemius
             return Text;
         }
 
-        public override string encrypt() //що робить метод?
+        public override string encrypt() //encrypt
         {
             tempString = "";
             getKey(Key);
             int j = 0;
-            bool bool1;//назва змінної
+            bool switcher;
             foreach (char item in Text)
             {
                 if (Key1[j]<0)
                 {
-                    bool1 = false;
+                    switcher = false;
                 }
                 else
                 {
-                    bool1 = true;
+                    switcher = true;
                 }
-                if (!substitution(item, AMOUNT_EN_CHAR, EN, bool1, j))
+                if (!substitution(item, AMOUNT_EN_CHAR, EN, switcher, j))
                 {
-                    if (!substitution(item, AMOUNT_RU_CHAR, RU, bool1, j))
+                    if (!substitution(item, AMOUNT_RU_CHAR, RU, switcher, j))
                     {
-                        if (!substitution(item, AMOUNT_DEX, DEX, bool1, j))
+                        if (!substitution(item, AMOUNT_DEX, DEX, switcher, j))
                         {
                             tempString += item;
                             
@@ -114,14 +110,12 @@ namespace tritemius
             return Text;
         }
 
-        private bool substitution(char item, int amount, string listLanguage,bool encription,int iterator) //що робить метод?
+        private bool substitution(char item, int amount, string listLanguage,bool encription,int iterator) //change one char on encrypted code
         {
             if (listLanguage.Contains(item))
             {
                 if (encription)
                 {
-//пустий рядок -
-
                     for (int i = 0; i < listLanguage.Length; i++)
                     {
                         if (item == System.Convert.ToChar(listLanguage[i]))
@@ -172,7 +166,7 @@ namespace tritemius
 
 
 
-        private void getKey(string Key) //що робить метод?
+        private void getKey(string Key) //convert key from text to int
         {
             for (int j = 0; j < 500; j++)
             {
