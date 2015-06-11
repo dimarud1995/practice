@@ -17,13 +17,12 @@ namespace tritemius
            
             get
             {
-
                 return _key;
             }
 
             set
             {
-           string  tempkey=value;
+                string  tempkey=value;
                 if (tempkey.Length==8)
                 {
                         _key = value;
@@ -32,9 +31,6 @@ namespace tritemius
                 {
                     MessageBox.Show("Key length must be 8 symbols!");
                 }
-               
-
-
             }
         }
 
@@ -51,7 +47,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//decrypt
         {
             string tmp = "";
             try
@@ -70,15 +66,11 @@ namespace tritemius
              }
             catch (Exception ex)
             {
-                           
             }
-           
             return tmp;
-
-
         }
 
-        public override string encrypt()
+        public override string encrypt()//encrypt
         {
             try
             {
@@ -94,15 +86,8 @@ namespace tritemius
                 fs.Close();
             }
             catch (Exception ex)
-            {
-
-                
-            }
-           
+            {}
             return File.ReadAllText(@fileName, Encoding.GetEncoding(1251)); 
-           
-            
-           
         }
     }
 }

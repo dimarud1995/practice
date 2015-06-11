@@ -9,16 +9,17 @@ using System.IO;
 
 namespace tritemius
 {
-    static class transport
+    static class transport//class for exchange data between classes
     {
        static public string temp;
-        static public string T;
-        static public string P;
+        static public string T;//parameter of encoding
+        static public string P;//parameter of encoding
     }
-    class Bag : BaseClass
+    
+    class Bag : BaseClass//var key,text, methods encrypt, decrypt
     {
-        public int m, t;
-        int t1;
+        public int m, t;// parameters of encoding
+        int t1;//parameter of encoding
         int[] tempKeyS;
         int[] tempKeyP;
         public string st;
@@ -27,7 +28,6 @@ namespace tritemius
 
             get
             {
-
                 return _key;
             }
 
@@ -51,7 +51,7 @@ namespace tritemius
         }
 
 
-        public override string decrypt()
+        public override string decrypt()//decrypt
         {
             string tempString = "";
             string[] tempDec = Text.Split(' ');
@@ -149,20 +149,14 @@ namespace tritemius
                     l = 0;
                     j--;
                 }
-
             }
-           
-              //  tempTempString = Encoding.GetEncoding(1251).GetString(tempByte);
-           
             return tempTempString;
         }
 
-        public override string encrypt()
+        public override string encrypt()//encrypt
         {
             tempKeyS = getSecretKey();
-           // m = getM(tempKeyS);
             tempKeyP = getKey(tempKeyS, m, t);
-            
             st = "";
             foreach (var item in tempKeyP)
             {
@@ -173,7 +167,6 @@ namespace tritemius
             StringBuilder sb = new StringBuilder();
             foreach (byte b in System.Text.Encoding.GetEncoding(1251).GetBytes(Text))
                 sb.Append(Convert.ToString(b, 2).PadLeft(8, '0'));
-
             string binaryStr = sb.ToString();
             int len = tempKeyP.Length;
             int endZero = binaryStr.Length % len;
@@ -190,7 +183,6 @@ namespace tritemius
             {
                 amountBlocks = binaryStr.Length / len;
             }
-
             string[] masBlockText = new string[amountBlocks];
             int bcount = 0;
             int dcount = 0;
@@ -204,11 +196,9 @@ namespace tritemius
                 }
                 else
                 {
-                    Console.WriteLine("{0}", masBlockText[dcount]);
                     dcount++;
                     bcount = 0;
                     i--;
-
                 }
             }
 
@@ -216,7 +206,7 @@ namespace tritemius
             return substitution(tempString, len, masBlockText);
         }
 
-        public int getM(int[] key)
+        public int getM(int[] key) //get parameter M, which need for encripting
         {
             for (int i = 0; i < key.Length; i++)
             {
@@ -237,11 +227,10 @@ namespace tritemius
             return m;
         }
 
-        private string substitution(string tempString, int len, string[] masBlockText)
+        private string substitution(string tempString, int len, string[] masBlockText) //change one char on encrypted code
         {
             for (int i = 0; i < masBlockText.Length; i++)
             {
-
                 int tempNumber = 0;
                 for (int j = 0; j < len; j++)
                 {
@@ -256,7 +245,7 @@ namespace tritemius
             return tempString;
         }
 
-        public int[] getSecretKey()
+        public int[] getSecretKey()//get secret key
         {
            string[] tempKey = Key.Split(',');
             int[] tempTempKey=new int[tempKey.Length];
@@ -267,7 +256,7 @@ namespace tritemius
             }
             return tempTempKey;
         }
-        public int[] getKey(int[] key, int m,int t)
+        public int[] getKey(int[] key, int m,int t)// get open key
         {
             int[] tempTempKey = new int[key.Length];
             for (int i = 0; i < key.Length; i++)
@@ -275,11 +264,10 @@ namespace tritemius
                 tempTempKey[i] = (key[i] * t) % m;
                 Console.WriteLine("{0} {1}", tempTempKey[i], key[i]);
             }
-        
             return tempTempKey;
         }
 
-        private int getT1(int m,int t)
+        private int getT1(int m,int t)//get parameter t1? which need for decrypting
         {
            int t1 = 1;
             for (; 
@@ -287,7 +275,6 @@ namespace tritemius
             Console.WriteLine("{0} {1} {2}", m, t, t1);
             return t1;
         }
-
-     
     }
 }
+

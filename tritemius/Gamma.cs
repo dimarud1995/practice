@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace tritemius
 {
-    class Gamma :BaseClass
+    class Gamma :BaseClass //abstract class: var text,var key, methods: encrypt, decrypt
     {
         private string tempString;
         private int[] Key1 = new int[500];
@@ -19,16 +19,12 @@ namespace tritemius
         {
             get
             {
-
                 return _key;
             }
 
             set
             {
-
                 _key = value;
-
-
             }
         }
 
@@ -45,7 +41,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//decrypt
         {
             tempString = "";
             getKey(Key);
@@ -61,11 +57,7 @@ namespace tritemius
                 
                 if (!substitution1(item, AMOUNT_EN_CHAR, EN, j))
                 {
-
-                       //tempString += item;
-                            MessageBox.Show("Символ не кодується: " + item);
-
-
+                           MessageBox.Show("Символ не кодується: " + item);
                 }
 
                 j++;
@@ -77,7 +69,7 @@ namespace tritemius
             return Text;
         }
 
-        public override string encrypt()
+        public override string encrypt()//encrypt
         {
 
             tempString = "";
@@ -88,10 +80,7 @@ namespace tritemius
             {
                 if (!substitution(item, AMOUNT_EN_CHAR, EN,j))
                 {
-                   
-                            //tempString += item;
-                            MessageBox.Show("Символ не кодується: " + item);
-     
+                    MessageBox.Show("Символ не кодується: " + item);
                 }
 
                 j++;
@@ -106,7 +95,7 @@ namespace tritemius
             return Text;
         }
 
-        private void getKey(string key)
+        private void getKey(string key)//convert key from text to int
         {
 
             int st;
@@ -118,9 +107,6 @@ namespace tritemius
             {
                 st = int.Parse(Key);
             }
-            
-
-
             Random rand;
             string st1 =null;
             for (int i = 0; i < Text.Length; i++)
@@ -134,7 +120,7 @@ namespace tritemius
             
         }
 
-        private bool substitution(char item, int amount, string listLanguage,int iterator)
+        private bool substitution(char item, int amount, string listLanguage,int iterator)//change one char on encrypted code
         {
             if (listLanguage.Contains(item))
             {
@@ -143,8 +129,8 @@ namespace tritemius
                         if (item == System.Convert.ToChar(listLanguage[i]))
                         {
                       
-                            int z = i^Key1[iterator];
-                            decText.Add(z);
+                            int zIter = i^Key1[iterator];
+                            decText.Add(zIter);
                       
                       //      Console.WriteLine("{0} {1} {2} {3} {4} {5}", i, iterator,Key1[iterator], z, tempString, listLanguage[z]);
                         }
@@ -158,11 +144,11 @@ namespace tritemius
                 return false;
             }
         }
-        private bool substitution1(int item, int amount, string listLanguage, int iterator)
+        private bool substitution1(int item, int amount, string listLanguage, int iterator)//change  encrypted code on one char
         {
-            int z = item ^ Key1[iterator];
+            int zIter = item ^ Key1[iterator];
 
-            tempString += System.Convert.ToChar(listLanguage[z]);
+            tempString += System.Convert.ToChar(listLanguage[zIter]);
                 return true;
 
         }
