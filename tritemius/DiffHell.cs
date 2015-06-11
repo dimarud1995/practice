@@ -8,7 +8,7 @@ using System.IO;
 
 namespace tritemius
 {
-    class DiffHell : BaseClass
+    class DiffHell : BaseClass //додай опис класу
     {
         public byte[] tempCode;
        private static DiffHell instance;
@@ -33,7 +33,7 @@ namespace tritemius
 
             get
             {
-
+                //!!
                 return _key;
             }
 
@@ -64,7 +64,7 @@ namespace tritemius
         {
             return "";
         }
-        public  string decrypt(byte[] cipherText, byte[] Key, byte[] IV)
+        public  string decrypt(byte[] cipherText, byte[] Key, byte[] IV) //опиши що робить даний метод
         {
             // Check arguments. 
             if (cipherText == null || cipherText.Length <= 0)
@@ -108,7 +108,7 @@ namespace tritemius
             return plaintext;
         }
 
-        public  byte[] encrypt(string plainText, byte[] Key, byte[] IV)
+        public  byte[] encrypt(string plainText, byte[] Key, byte[] IV) //опиши що робить даний метод
         {
             // Check arguments. 
             if (plainText == null || plainText.Length <= 0)
@@ -143,7 +143,7 @@ namespace tritemius
                     }
                 }
             }
-
+//!! прибери рядок
             
             // Return the encrypted bytes from the memory stream. 
             return encrypted;
