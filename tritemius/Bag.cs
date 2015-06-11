@@ -9,15 +9,15 @@ using System.IO;
 
 namespace tritemius
 {
-    static class transport
+    static class transport//опиши клас
     {
        static public string temp;
-        static public string T;
-        static public string P;
-    }
-    class Bag : BaseClass
+        static public string T;//про що змінна?
+        static public string P;//про що змінна?
+    } //я б радила зробити відступ між класами
+    class Bag : BaseClass//опиши клас
     {
-        public int m, t;
+        public int m, t;// цікаві імена для змінних, а головне - несуть велику інформованість :) 
         int t1;
         int[] tempKeyS;
         int[] tempKeyP;
@@ -26,8 +26,8 @@ namespace tritemius
         {
 
             get
-            {
-
+            {//я б прибрали пустий рядок нижче 
+            
                 return _key;
             }
 
@@ -51,7 +51,7 @@ namespace tritemius
         }
 
 
-        public override string decrypt()
+        public override string decrypt()//Діма, допиши коментарії до свої методів (що кожен робить)
         {
             string tempString = "";
             string[] tempDec = Text.Split(' ');
@@ -63,7 +63,7 @@ namespace tritemius
            // m = getM(tempKeyS);
          
             transport.P = m.ToString();
-            t1 = getT1(m, t);
+            t1 = getT1(m, t);// + змінити назву змінної
             transport.T = t1.ToString();
             Console.WriteLine("P={0}  T={1}", m, t1);
             try
@@ -157,7 +157,7 @@ namespace tritemius
             return tempTempString;
         }
 
-        public override string encrypt()
+        public override string encrypt()//що робить метод??
         {
             tempKeyS = getSecretKey();
            // m = getM(tempKeyS);
@@ -210,13 +210,13 @@ namespace tritemius
                     i--;
 
                 }
-            }
+            }//занадто довгий метод, я б радила розбити на частини
 
 
             return substitution(tempString, len, masBlockText);
         }
 
-        public int getM(int[] key)
+        public int getM(int[] key) //що робить метод??
         {
             for (int i = 0; i < key.Length; i++)
             {
@@ -237,7 +237,7 @@ namespace tritemius
             return m;
         }
 
-        private string substitution(string tempString, int len, string[] masBlockText)
+        private string substitution(string tempString, int len, string[] masBlockText) //що робить метод??
         {
             for (int i = 0; i < masBlockText.Length; i++)
             {
@@ -256,7 +256,7 @@ namespace tritemius
             return tempString;
         }
 
-        public int[] getSecretKey()
+        public int[] getSecretKey()//що робить метод??
         {
            string[] tempKey = Key.Split(',');
             int[] tempTempKey=new int[tempKey.Length];
@@ -267,7 +267,7 @@ namespace tritemius
             }
             return tempTempKey;
         }
-        public int[] getKey(int[] key, int m,int t)
+        public int[] getKey(int[] key, int m,int t)//що робить метод?
         {
             int[] tempTempKey = new int[key.Length];
             for (int i = 0; i < key.Length; i++)
@@ -279,7 +279,7 @@ namespace tritemius
             return tempTempKey;
         }
 
-        private int getT1(int m,int t)
+        private int getT1(int m,int t)//що робить метод?
         {
            int t1 = 1;
             for (; 
@@ -291,3 +291,5 @@ namespace tritemius
      
     }
 }
+
+// там де є пусті непотрібні рядочки - повидаляй)
