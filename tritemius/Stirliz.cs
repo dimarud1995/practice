@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace tritemius
 {
-    class Stirliz : BaseClass
+    class Stirliz : BaseClass//Діма ну що робить цей клас?
     {
         private string tempString;
         private string[] tempKey;
@@ -16,13 +16,13 @@ namespace tritemius
         {
             get
             {
-
+//прибери лишні пусті рядки!
                 return _key;
             }
 
             set
             {
-
+//!!
                 _key = value;
 
 
@@ -42,7 +42,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//хочу бачити коментарії твої
         {
             getKey();
             tempString = "";
@@ -59,7 +59,7 @@ namespace tritemius
             return tempString;
         }
 
-        public override string encrypt()
+        public override string encrypt()//опис
         {
             getKey();
             tempString = "";
@@ -75,7 +75,7 @@ namespace tritemius
             }
             return tempString;
         }
-        public void getKey()
+        public void getKey()//опис
         {
             tempKey = Key.Split(new char[] { '\n' },100);
 
@@ -90,7 +90,7 @@ namespace tritemius
              //   Console.WriteLine(tempKey[i]);
             }
         }
-        public int substitution(char character)
+        public int substitution(char character) //опис
         {
             int code=0;
             List<string> codes = new List<string>();
@@ -113,7 +113,7 @@ namespace tritemius
             if (codes.Count!=0)
             {
                 Random rand = new Random();
-                int k = int.Parse(rand.Next(codes.Count).ToString());
+                int k = int.Parse(rand.Next(codes.Count).ToString());//назва змінної
               //  Console.WriteLine("{0} {1}", int.Parse(rand.Next(100).ToString()) % codes.Count(), int.Parse(rand.Next(100).ToString()) % codes.Count());
                 code = codeI[k] *100 + codeJ[k];
             }
@@ -128,7 +128,7 @@ namespace tritemius
             }
             return code;
         }
-        public string substitution(int code)
+        public string substitution(int code)//опис
         {
              return tempKey[code/100][code%100].ToString();
         }
