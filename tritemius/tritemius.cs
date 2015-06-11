@@ -11,11 +11,11 @@ using System.IO;
 
 namespace tritemius
 {
-    public static class TypeKey
+    public static class TypeKey//що робить клас?
     {
         public static int radioValue = 1;
     }
-    class Tritemius : BaseClass
+    class Tritemius : BaseClass//що робить клас?
     {
         private int[] Key1 = new int[500];
         private string tempString;
@@ -29,13 +29,13 @@ namespace tritemius
         {
             get
             {
-
+//прибери лишні рядки
                 return _key;
             }
 
             set
             {
-
+//прибери лишні рядки
                 _key = value;
 
 
@@ -55,7 +55,7 @@ namespace tritemius
             }
         }
 
-        public override string decrypt()
+        public override string decrypt()//що робить метод?
         {
             tempString = "";
             getKey(Key);
@@ -79,12 +79,12 @@ namespace tritemius
             return Text;
         }
 
-        public override string encrypt()
+        public override string encrypt() //що робить метод?
         {
             tempString = "";
             getKey(Key);
             int j = 0;
-            bool bool1;
+            bool bool1;//назва змінної
             foreach (char item in Text)
             {
                 if (Key1[j]<0)
@@ -114,13 +114,13 @@ namespace tritemius
             return Text;
         }
 
-        private bool substitution(char item, int amount, string listLanguage,bool encription,int iterator)
+        private bool substitution(char item, int amount, string listLanguage,bool encription,int iterator) //що робить метод?
         {
             if (listLanguage.Contains(item))
             {
                 if (encription)
                 {
-
+//пустий рядок -
 
                     for (int i = 0; i < listLanguage.Length; i++)
                     {
@@ -172,7 +172,7 @@ namespace tritemius
 
 
 
-        private void getKey(string Key)
+        private void getKey(string Key) //що робить метод?
         {
             for (int j = 0; j < 500; j++)
             {
